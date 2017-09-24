@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="RenderEngine">
+      <UniqueIdentifier>{61f8ae98-138b-42dc-9d01-3664ac86fac1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RenderEngine\Headers">
+      <UniqueIdentifier>{130bd37d-dbf5-4539-b5eb-5b0374698a8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RenderEngine\Source">
+      <UniqueIdentifier>{4dc225f1-fed7-4771-b3e2-77a661f53045}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PhysicsEngine">
+      <UniqueIdentifier>{ead27894-6466-4ef0-b1ae-2e1a045a3f0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PhysicsEngine\Header">
+      <UniqueIdentifier>{1500344e-e40b-4c99-a1cb-2d73d76f36a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PhysicsEngine\Source">
+      <UniqueIdentifier>{8f3eed18-202e-43be-8d05-eaca3d8c50ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RenderEngine\Shaders">
+      <UniqueIdentifier>{d440db51-8632-4887-9e17-7b73430fbc02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AssetManager">
+      <UniqueIdentifier>{ce9b1cb7-bdcd-4711-96a3-d524958f3a81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AIManager">
+      <UniqueIdentifier>{1feca217-3562-4205-aaf9-239e073a7222}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AssetManager\Header">
+      <UniqueIdentifier>{a95aa49c-b364-48d4-a4ca-ca900ce15d45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AssetManager\Source">
+      <UniqueIdentifier>{3e84ef33-0a2c-4955-86b8-d60275a68e51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{0afec41e-3411-4493-8758-0fef30a14524}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Headers">
+      <UniqueIdentifier>{80084e29-ec31-4dac-b626-ab6ad273d226}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Source">
+      <UniqueIdentifier>{f72c8348-a2ba-460a-922b-c651aea745f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils">
+      <UniqueIdentifier>{01c6c120-c74e-4f97-980a-1f70f95f3e18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils\Header">
+      <UniqueIdentifier>{21961fda-4478-4d60-81ee-3cfc6b910569}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils\Source">
+      <UniqueIdentifier>{98fcb354-2fae-448c-8ddf-affc5357296a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\RenderEngine\Source\RenderEngineInterface.cpp">
+      <Filter>RenderEngine\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\PhysicsEngine\Source\PhysicsEngineInterface.cpp">
+      <Filter>PhysicsEngine\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\RenderEngine\Source\RenderContext.cpp">
+      <Filter>RenderEngine\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\RenderEngine\Source\Vertex.cpp">
+      <Filter>RenderEngine\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\RenderEngine\Source\RenderNode.cpp">
+      <Filter>RenderEngine\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\AssetManager\Source\TextureManager.cpp">
+      <Filter>AssetManager\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\RenderEngine\Source\Camera.cpp">
+      <Filter>RenderEngine\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Game\Game.cpp">
+      <Filter>Game\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Game\GameObject.cpp">
+      <Filter>Game\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Utils\ObjectPool.cpp">
+      <Filter>Utils\Source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Source\RenderEngine\Source\RenderEngineInterface.h">
+      <Filter>RenderEngine\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\PhysicsEngine\Source\PhysicsEngineInterface.h">
+      <Filter>PhysicsEngine\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\RenderEngine\Source\RenderContext.h">
+      <Filter>RenderEngine\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\RenderEngine\Source\RenderIncludes.h">
+      <Filter>RenderEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\RenderEngine\Source\Vertex.h">
+      <Filter>RenderEngine\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\RenderEngine\Source\RenderNode.h">
+      <Filter>RenderEngine\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\AssetManager\Source\TextureManager.h">
+      <Filter>AssetManager\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\AssetManager\stb_image.h">
+      <Filter>AssetManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\RenderEngine\Source\Camera.h">
+      <Filter>RenderEngine\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\stdafx.h" />
+    <ClInclude Include="Source\Game\Game.h">
+      <Filter>Game\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Game\GameObject.h">
+      <Filter>Game\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Utils\ObjectPool.h">
+      <Filter>Utils\Header</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Source\RenderEngine\Source\Shaders\basicFragShader.frag">
+      <Filter>RenderEngine\Shaders</Filter>
+    </None>
+    <None Include="Source\RenderEngine\Source\Shaders\basicVertShader.vs">
+      <Filter>RenderEngine\Shaders</Filter>
+    </None>
+    <None Include="Source\RenderEngine\Source\Shaders\FS_Pos_Tex.frag">
+      <Filter>RenderEngine\Shaders</Filter>
+    </None>
+    <None Include="Source\RenderEngine\Source\Shaders\VS_Pos_Tex.vs">
+      <Filter>RenderEngine\Shaders</Filter>
+    </None>
+  </ItemGroup>
+</Project>

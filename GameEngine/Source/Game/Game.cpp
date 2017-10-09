@@ -1,11 +1,9 @@
 #include "stdafx.h"
-#include <memory>
 
 #include "Game.h"
 
-#include "GameObject.h"
 #include "../RenderEngine/Source/RenderEngineInterface.h"
-#include "../Utils/ObjectPool.h"
+#include "GameObject.h"
 
 CGame* CGame::m_pInst = nullptr;
 CGame* CGame::GetInstance()
@@ -35,12 +33,18 @@ CGame::~CGame()
 
 void CGame::Initialize()
 {
-
+	CGameObject* background = new CGameObject();
+	IRenderEngine::GetInstance()->AddRenderObject(background);
+	
+	m_vecGameObjects.push_back(background);
 }
 
 void CGame::Update(float deltaTime)
 {
-
+	for (unsigned int i = 0; i < m_vecGameObjects.size(); i++)
+	{
+		m_vecGameObjects[i]->Update(deltaTime);
+	}
 }
 void CGame::Destroy()
 {

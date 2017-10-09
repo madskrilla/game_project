@@ -1,7 +1,8 @@
 #pragma once
 
 
-template <class t> class CObjectPool
+template <class t> 
+class CObjectPool
 {
 public:
 

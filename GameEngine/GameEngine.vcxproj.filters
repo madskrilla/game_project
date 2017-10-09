@@ -56,6 +56,9 @@
     <Filter Include="Utils\Source">
       <UniqueIdentifier>{98fcb354-2fae-448c-8ddf-affc5357296a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="InputManager">
+      <UniqueIdentifier>{98c07d8d-77bc-4593-94af-38affff1a9f0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Main.cpp">
@@ -91,8 +94,8 @@
     <ClCompile Include="Source\Game\GameObject.cpp">
       <Filter>Game\Source</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Utils\ObjectPool.cpp">
-      <Filter>Utils\Source</Filter>
+    <ClCompile Include="Source\Input\IInputManager.cpp">
+      <Filter>InputManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -130,8 +133,8 @@
     <ClInclude Include="Source\Game\GameObject.h">
       <Filter>Game\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Utils\ObjectPool.h">
-      <Filter>Utils\Header</Filter>
+    <ClInclude Include="Source\Input\IInputManager.h">
+      <Filter>InputManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

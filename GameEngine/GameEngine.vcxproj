@@ -139,6 +139,7 @@
     <ClCompile Include="Source\AssetManager\Source\TextureManager.cpp" />
     <ClCompile Include="Source\Game\Game.cpp" />
     <ClCompile Include="Source\Game\GameObject.cpp" />
+    <ClCompile Include="Source\Input\IInputManager.cpp" />
     <ClCompile Include="Source\Main.cpp" />
     <ClCompile Include="Source\PhysicsEngine\Source\PhysicsEngineInterface.cpp" />
     <ClCompile Include="Source\RenderEngine\Source\Camera.cpp" />
@@ -150,13 +151,13 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Source\Utils\ObjectPool.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\AssetManager\Source\TextureManager.h" />
     <ClInclude Include="Source\AssetManager\stb_image.h" />
     <ClInclude Include="Source\Game\Game.h" />
     <ClInclude Include="Source\Game\GameObject.h" />
+    <ClInclude Include="Source\Input\IInputManager.h" />
     <ClInclude Include="Source\PhysicsEngine\Source\PhysicsEngineInterface.h" />
     <ClInclude Include="Source\RenderEngine\Source\Camera.h" />
     <ClInclude Include="Source\RenderEngine\Source\RenderContext.h" />
@@ -165,7 +166,6 @@
     <ClInclude Include="Source\RenderEngine\Source\RenderNode.h" />
     <ClInclude Include="Source\RenderEngine\Source\Vertex.h" />
     <ClInclude Include="Source\stdafx.h" />
-    <ClInclude Include="Source\Utils\ObjectPool.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Source\RenderEngine\Source\Shaders\basicFragShader.frag" />

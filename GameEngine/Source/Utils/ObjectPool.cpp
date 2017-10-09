@@ -1,5 +1,4 @@
 #include "stdafx.h"
-#include <memory>
 #include <iterator>
 #include <algorithm>
 
@@ -46,4 +45,10 @@ std::weak_ptr<t> CObjectPool<t>::GetNextObject()
 	std::sort(m_vecObjects.begin(), m_vecObjects.end());
 
 	return copy;
+}
+
+template<class t>
+void CObjectPool<t>::Update()
+{
+
 }

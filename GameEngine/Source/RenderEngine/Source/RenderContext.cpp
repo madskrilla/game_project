@@ -4,6 +4,7 @@
 #include "RenderContext.h"
 #include "Vertex.h"
 #include "RenderNode.h"
+#include "IRenderer.h"
 #include "Camera.h"
 #include "../../AssetManager/Source/TextureManager.h"
 #include "../../Game/GameObject.h"
@@ -117,10 +118,10 @@ void CRenderContext::InitializeShaderProgram()
 
 void CRenderContext::LinkShaderAttributes()
 {
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(CVertex), (GLvoid*)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(VERT_POS_UV), (GLvoid*)0);
 	glEnableVertexAttribArray(0);
 
-	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(CVertex), (GLvoid*)(3 * sizeof(GLfloat)));
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(VERT_POS_UV), (GLvoid*)(3 * sizeof(GLfloat)));
 	glEnableVertexAttribArray(1);
 }
 
@@ -143,7 +144,7 @@ void CRenderContext::UpdateVertexBuffer()
 	glBindBuffer(GL_ARRAY_BUFFER, m_VertBufferObject);
 	glBindVertexArray(m_VertArrayObject);
 
-	glBufferData(GL_ARRAY_BUFFER, m_vecVerticies.size() * sizeof(CVertex), &m_vecVerticies[0], GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, m_vecVerticies.size() * sizeof(VERT_POS_UV), &m_vecVerticies[0], GL_STATIC_DRAW);
 
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
@@ -157,50 +158,46 @@ void CRenderContext::InitializeIndexBuffer()
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 }
 
-void CRenderContext::RenderNode(CRenderNode * node)
+void CRenderContext::RenderNode(IRenderer * node)
 {
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ElementArrayObjectIndicies);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, node->GetIndexArray().size() * sizeof(int), &node->GetIndexArray()[0], GL_STATIC_DRAW);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, node->GetNumIndicies() * sizeof(unsigned int), &m_vecIndicies[node->GetStartIndex()], GL_STATIC_DRAW);
 	glBindTexture(GL_TEXTURE_2D, node->GetTexture());
 
 	unsigned int transformLoc = glGetUniformLocation(m_ShaderProgram, "transform");
-	glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(node->GetTransform()));
+	glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(node->GetTransformMatrix()));
 
-	glDrawElements(GL_TRIANGLES, (int)node->GetIndexArray().size(), GL_UNSIGNED_INT, 0);
+	glDrawElements(GL_TRIANGLES, (int)node->GetNumIndicies(), GL_UNSIGNED_INT, 0);
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 }
 
-void CRenderContext::CreateRenderNode(std::vector<CVertex*> verts, CGameObject* obj)
+void CRenderContext::AddRenderObject(IRenderer* render, unsigned int numVerts)
 {
-	CRenderNode* node = new CRenderNode();
+	render->SetIndexStart((unsigned int)m_vecIndicies.size());
+	VERT_POS_UV* verts = (VERT_POS_UV*)render->GetVertexArray();
+	bool vertExists = false;
 
-	bool vertExists;
-	for (unsigned int i = 0; i < verts.size(); i++)
+	for (unsigned int i = 0; i < 6; i++)
 	{
 		vertExists = false;
 		for (unsigned int j = 0; j < m_vecVerticies.size(); j++)
 		{
-			if (m_vecVerticies[j] == *verts[i])
+			if (m_vecVerticies[j] == verts[i])
 			{
-				node->AddIndex(j);
 				m_vecIndicies.push_back(j);
 				vertExists = true;
-				break;
 			}
 		}
 		if (vertExists == false)
 		{
-			m_vecVerticies.push_back(*verts[i]);
-			node->AddIndex((int)m_vecVerticies.size() - 1);
+			m_vecVerticies.push_back(verts[i]);
 			m_vecIndicies.push_back((int)m_vecVerticies.size() - 1);
 		}
 	}
+	render->SetTexture(m_pTextureManager->GetTexture(render->GetTextureName()));
 
-	node->SetTexture(m_pTextureManager->GetTexture(obj->GetTexture()));
-	obj->SetRenderNode(node);
-
-	m_vecRenderNodes.push_back(node);
+	m_vecRenderers.push_back(render);
 	UpdateVertexBuffer();
 }
 
@@ -211,16 +208,16 @@ void CRenderContext::Render(float deltaTime)
 	glBindVertexArray(m_VertArrayObject);
 	m_pCamera->SendCameraToGPU(m_ShaderProgram);
 
-	for (unsigned int i = 0; i < m_vecRenderNodes.size(); i++)
+	for (unsigned int i = 0; i < m_vecRenderers.size(); i++)
 	{
-		RenderNode(m_vecRenderNodes[i]);
+		RenderNode(m_vecRenderers[i]);
 	}
 }
 
 void CRenderContext::Destroy()
 {
 	m_vecVerticies.clear();
-	m_vecRenderNodes.clear();
+	m_vecRenderers.clear();
 	m_vecIndicies.clear();
 
 	GLuint buffers[] = { m_VertBufferObject, m_ElementArrayObjectIndicies };

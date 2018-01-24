@@ -1,7 +1,7 @@
 #pragma once
 
 class CVertex;
-class CRenderNode;
+class IRenderer;
 class CTextureManager;
 class CCamera;
 class CGameObject;
@@ -19,7 +19,7 @@ public:
 	void Render(float deltaTime);
 	void Destroy();
 
-	void CreateRenderNode(std::vector<CVertex*> verts, CGameObject* obj);
+	void AddRenderObject(IRenderer* render, unsigned int numVerts);
 	void SetCamera(CCamera* cam);
 private:
 	//Shader Methods
@@ -38,7 +38,7 @@ private:
 
 	void InitializeIndexBuffer();
 
-	void RenderNode(CRenderNode * node);
+	void RenderNode(IRenderer * node);
 
 	CTextureManager* m_pTextureManager;
 	CCamera* m_pCamera;
@@ -59,7 +59,7 @@ private:
 	GLuint m_VertArrayObject;
 	GLuint m_ElementArrayObjectIndicies;
 
-	std::vector<CVertex> m_vecVerticies;
+	std::vector<VERT_POS_UV> m_vecVerticies;
 	std::vector<unsigned int> m_vecIndicies;
-	std::vector<CRenderNode *> m_vecRenderNodes;
+	std::vector<IRenderer *> m_vecRenderers;
 };

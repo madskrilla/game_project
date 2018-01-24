@@ -3,7 +3,7 @@
 
 #include "RenderIncludes.h"
 #include "RenderContext.h"
-#include "Vertex.h"
+#include "IRenderer.h"
 #include "Camera.h"
 #include "../../Game/GameObject.h"
 
@@ -41,29 +41,6 @@ void IRenderEngine::Initialize()
 	m_pRenderContext->Initialize();
 
 	m_fTimeLast = 0;
-
-	for (unsigned int i = 0; i < 6; i++)
-	{
-		m_lstQuadVerts.push_back(new CVertex());
-	}
-
-	m_lstQuadVerts[0]->SetPosition(.5f, -.5f, 0);
-	m_lstQuadVerts[0]->SetTexCoords(1, 0);
-
-	m_lstQuadVerts[1]->SetPosition(-.5f, -.5f, 0);
-	m_lstQuadVerts[1]->SetTexCoords(0, 0);
-					 
-	m_lstQuadVerts[2]->SetPosition(-.5f, .5f, 0);
-	m_lstQuadVerts[2]->SetTexCoords(0, 1);
-					
-	m_lstQuadVerts[3]->SetPosition(.5f, .5f, 0);
-	m_lstQuadVerts[3]->SetTexCoords(1, 1);
-				
-	m_lstQuadVerts[4]->SetPosition(.5f, -.5f, 0);
-	m_lstQuadVerts[4]->SetTexCoords(1.0f, 0);
-					
-	m_lstQuadVerts[5]->SetPosition(-.5f, .5f, 0);
-	m_lstQuadVerts[5]->SetTexCoords(0, 1);
 }
 
 GLFWwindow* IRenderEngine::CreateNewWindow()
@@ -90,9 +67,9 @@ GLFWwindow* IRenderEngine::CreateNewWindow()
 	return window;
 }
 
-void IRenderEngine::AddRenderObject(CGameObject* obj)
+void IRenderEngine::AddRenderObject(IRenderer* obj)
 {
-	m_pRenderContext->CreateRenderNode(m_lstQuadVerts, obj);
+	m_pRenderContext->AddRenderObject(obj, obj->GetNumIndicies());
 }
 
 float IRenderEngine::DeltaTime()

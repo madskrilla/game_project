@@ -1,12 +1,18 @@
 #include "stdafx.h"
 #include "GameObject.h"
 
-#include "../RenderEngine/Source/RenderNode.h"
+#include "../RenderEngine/Source/IRenderer.h"
+#include "../RenderEngine/Source/QuadRenderer.h"
 
 CGameObject::CGameObject()
 {
-	m_strTexture = "container.jpg";
-	m_vecScale = { 1,1,1 };
+	m_vecScale =	{ 1, 1, 1 };
+	m_vecPosition = { 0, 0, 0 };
+	m_vecRotation = { 0, 0, 0 };
+
+	m_pRenderer = new cQuadRenderer();
+	m_pRenderer->Initialize();
+	m_pRenderer->SetTextureName("container.jpg");
 }
 
 CGameObject::CGameObject(CGameObject& copy)
@@ -36,5 +42,5 @@ void CGameObject::SetScale(float x, float y, float z)
 
 void CGameObject::Update(float deltaTime)
 {
-	m_pRenderNode->UpdateNode(m_vecPosition, m_vecRotation, m_vecScale);
+	m_pRenderer->UpdateTransform(m_vecPosition, m_vecRotation, m_vecScale);
 }

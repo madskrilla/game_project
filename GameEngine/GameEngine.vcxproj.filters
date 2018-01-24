@@ -94,8 +94,8 @@
     <ClCompile Include="Source\Game\GameObject.cpp">
       <Filter>Game\Source</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Input\IInputManager.cpp">
-      <Filter>InputManager</Filter>
+    <ClCompile Include="Source\RenderEngine\Source\QuadRenderer.cpp">
+      <Filter>RenderEngine\Source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -133,8 +133,14 @@
     <ClInclude Include="Source\Game\GameObject.h">
       <Filter>Game\Headers</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Input\IInputManager.h">
-      <Filter>InputManager</Filter>
+    <ClInclude Include="Source\RenderEngine\Source\QuadRenderer.h">
+      <Filter>RenderEngine\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\RenderEngine\Source\RenderStructs.h">
+      <Filter>RenderEngine\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\RenderEngine\Source\IRenderer.h">
+      <Filter>RenderEngine\Headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -4,7 +4,7 @@
 class CRenderContext;
 class CGameObject;
 struct GLFWwindow;
-class CVertex;
+class IRenderer;
 
 class IRenderEngine
 {
@@ -29,14 +29,13 @@ public:
 
 	//Members
 	static IRenderEngine* GetInstance();
-	void AddRenderObject(CGameObject* obj);
+	void AddRenderObject(IRenderer* obj);
 private:
 	//Methods
 	GLFWwindow* CreateNewWindow();
 	//Members
 	GLFWwindow* m_pWindow;
 	CRenderContext* m_pRenderContext;
-	std::vector<CVertex*> m_lstQuadVerts;
 	float m_fTimeLast;
 
 };

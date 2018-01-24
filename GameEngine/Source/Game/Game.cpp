@@ -34,7 +34,7 @@ CGame::~CGame()
 void CGame::Initialize()
 {
 	CGameObject* background = new CGameObject();
-	IRenderEngine::GetInstance()->AddRenderObject(background);
+	IRenderEngine::GetInstance()->AddRenderObject(background->GetRenderer());
 	
 	m_vecGameObjects.push_back(background);
 }

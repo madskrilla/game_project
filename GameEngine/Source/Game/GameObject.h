@@ -10,17 +10,17 @@ public:
 	CGameObject(CGameObject& copy);
 	virtual ~CGameObject();
 
-	virtual std::string GetTexture() { return m_strTexture; }
 	virtual void Update(float deltaTime);
 
-	void SetRenderNode(CRenderNode* node) { m_pRenderNode = node; }
 	void SetPosition(float x, float y, float z);
 	void SetRotation(float x, float y, float z);
 	void SetScale(float x, float y, float z);
 
+	IRenderer* GetRenderer() { return m_pRenderer; }
+
 protected:
 
-	CRenderNode* m_pRenderNode;
+	IRenderer* m_pRenderer;
 	std::string m_strTexture;
 
 	glm::vec3 m_vecPosition;

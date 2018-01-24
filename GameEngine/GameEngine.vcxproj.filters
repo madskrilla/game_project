@@ -76,12 +76,6 @@
     <ClCompile Include="Source\stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\RenderEngine\Source\Vertex.cpp">
-      <Filter>RenderEngine\Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\RenderEngine\Source\RenderNode.cpp">
-      <Filter>RenderEngine\Source</Filter>
-    </ClCompile>
     <ClCompile Include="Source\AssetManager\Source\TextureManager.cpp">
       <Filter>AssetManager\Source</Filter>
     </ClCompile>
@@ -110,12 +104,6 @@
     </ClInclude>
     <ClInclude Include="Source\RenderEngine\Source\RenderIncludes.h">
       <Filter>RenderEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\RenderEngine\Source\Vertex.h">
-      <Filter>RenderEngine\Headers</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\RenderEngine\Source\RenderNode.h">
-      <Filter>RenderEngine\Headers</Filter>
     </ClInclude>
     <ClInclude Include="Source\AssetManager\Source\TextureManager.h">
       <Filter>AssetManager\Header</Filter>

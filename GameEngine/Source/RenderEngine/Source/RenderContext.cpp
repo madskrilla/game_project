@@ -2,8 +2,6 @@
 #include "RenderIncludes.h"
 
 #include "RenderContext.h"
-#include "Vertex.h"
-#include "RenderNode.h"
 #include "IRenderer.h"
 #include "Camera.h"
 #include "../../AssetManager/Source/TextureManager.h"

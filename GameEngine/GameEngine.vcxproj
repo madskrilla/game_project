@@ -145,8 +145,6 @@
     <ClCompile Include="Source\RenderEngine\Source\QuadRenderer.cpp" />
     <ClCompile Include="Source\RenderEngine\Source\RenderContext.cpp" />
     <ClCompile Include="Source\RenderEngine\Source\RenderEngineInterface.cpp" />
-    <ClCompile Include="Source\RenderEngine\Source\RenderNode.cpp" />
-    <ClCompile Include="Source\RenderEngine\Source\Vertex.cpp" />
     <ClCompile Include="Source\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -164,9 +162,7 @@
     <ClInclude Include="Source\RenderEngine\Source\RenderContext.h" />
     <ClInclude Include="Source\RenderEngine\Source\RenderEngineInterface.h" />
     <ClInclude Include="Source\RenderEngine\Source\RenderIncludes.h" />
-    <ClInclude Include="Source\RenderEngine\Source\RenderNode.h" />
     <ClInclude Include="Source\RenderEngine\Source\RenderStructs.h" />
-    <ClInclude Include="Source\RenderEngine\Source\Vertex.h" />
     <ClInclude Include="Source\stdafx.h" />
   </ItemGroup>
   <ItemGroup>

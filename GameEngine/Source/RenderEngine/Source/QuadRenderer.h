@@ -6,7 +6,7 @@ class cQuadRenderer : public IRenderer
 public:
 	cQuadRenderer();
 	cQuadRenderer(cQuadRenderer& copy);
-	~cQuadRenderer();
+	virtual ~cQuadRenderer();
 
 	virtual void Initialize();
 	virtual void* GetVertexArray();

@@ -214,6 +214,8 @@ void CRenderContext::Render(float deltaTime)
 
 void CRenderContext::Destroy()
 {
+	delete m_pCamera;
+
 	m_vecVerticies.clear();
 	m_vecRenderers.clear();
 	m_vecIndicies.clear();

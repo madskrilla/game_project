@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include <vld.h>
 
 #include "RenderEngine/Source/RenderEngineInterface.h"
 #include "PhysicsEngine\Source\PhysicsEngineInterface.h"
@@ -35,6 +36,8 @@ int main()
 
 	renderEngine->Destroy();
 	physicsEngine->Destroy();
+	textureManager->Destroy();
+	game->Destroy();
 }
 
 void InitializeModules()

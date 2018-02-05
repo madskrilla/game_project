@@ -7,7 +7,7 @@ class IRenderer
 public:
 	IRenderer() {};
 	IRenderer(IRenderer& copy) {};
-	~IRenderer() {};
+	virtual ~IRenderer() {};
 
 	virtual void Initialize() {};
 	virtual void* GetVertexArray() = 0;

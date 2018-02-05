@@ -36,9 +36,15 @@ void CTextureManager::Initialize()
 	LoadTextures();
 }
 
+void CTextureManager::Destroy()
+{
+	m_mapTextures.clear();
+	delete m_pInst;
+}
+
 void CTextureManager::LoadTextures()
 {
-	std::vector<Texture*> vecTextures;
+	std::vector<Texture> vecTextures;
 
 	WIN32_FIND_DATA data;
 	HANDLE findHandle;
@@ -48,16 +54,16 @@ void CTextureManager::LoadTextures()
 	findHandle = FindFirstFile(filePath.c_str(), &data);
 	do
 	{
-		Texture * newText = new Texture();
-		newText->name = data.cFileName;
+		Texture newText;
+		newText.name = data.cFileName;
 		vecTextures.push_back(newText);
 	} while (FindNextFile(findHandle, &data));
 
 	for (unsigned int i = 0; i < vecTextures.size(); i++)
 	{
-		Texture * tex = vecTextures[i];
-		std::string file = m_strTextureFolder + tex->name;
-		unsigned char * data = stbi_load(file.c_str(), &(tex->width), &(tex->height), &(tex->numChannels), 0);
+		Texture tex = vecTextures[i];
+		std::string file = m_strTextureFolder + tex.name;
+		unsigned char * data = stbi_load(file.c_str(), &(tex.width), &(tex.height), &(tex.numChannels), 0);
 
 		GLuint texture = 0;
 		glGenTextures(1, &texture);
@@ -70,10 +76,10 @@ void CTextureManager::LoadTextures()
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, tex->width, tex->height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, tex.width, tex.height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
 		glGenerateMipmap(GL_TEXTURE_2D);
 
-		m_mapTextures.insert(std::pair<std::string, unsigned int>(tex->name, texture));
+		m_mapTextures.insert(std::pair<std::string, unsigned int>(tex.name, texture));
 		stbi_image_free(data);
 	}
 

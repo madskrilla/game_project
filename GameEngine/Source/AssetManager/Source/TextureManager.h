@@ -21,6 +21,7 @@ public:
 
 	//Public API
 	void Initialize();
+	void Destroy();
 	unsigned int GetTexture(std::string name);
 
 private:

@@ -14,7 +14,7 @@ public:
 	GLfloat position[3];
 	GLfloat UV[2];
 
-	bool VERT_POS_UV::operator==(VERT_POS_UV rght)
+	bool VERT_POS_UV::operator==(VERT_POS_UV& rght)
 	{
 		GLfloat * rghtPosition = rght.position;
 		GLfloat * rightUVs = rght.UV;

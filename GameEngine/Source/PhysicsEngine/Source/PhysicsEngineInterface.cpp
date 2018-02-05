@@ -18,6 +18,7 @@ void IPhysicsEngine::Initialize()
 }
 void IPhysicsEngine::Destroy()
 {
+	delete m_pInst;
 }
 void IPhysicsEngine::Update(float deltaTime)
 {

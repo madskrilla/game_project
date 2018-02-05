@@ -13,7 +13,7 @@ cQuadRenderer::cQuadRenderer(cQuadRenderer& copy)
 }
 cQuadRenderer::~cQuadRenderer()
 {
-
+	m_vecVerts.clear();
 }
 
 void cQuadRenderer::Initialize()

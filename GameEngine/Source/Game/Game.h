@@ -2,8 +2,6 @@
 
 
 class CGameObject;
-template<class t>
-class CObjectPool;
 
 class CGame
 {

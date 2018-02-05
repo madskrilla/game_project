@@ -48,5 +48,11 @@ void CGame::Update(float deltaTime)
 }
 void CGame::Destroy()
 {
+	for (unsigned int i = 0; i < m_vecGameObjects.size(); i++)
+	{
+		delete m_vecGameObjects[i];
+	}
+	m_vecGameObjects.clear();
 
+	delete m_pInst;
 }

@@ -53,7 +53,7 @@ GLFWwindow* IRenderEngine::CreateNewWindow()
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
-	window = glfwCreateWindow(800, 600, "My Game Engine", nullptr, nullptr);
+	window = glfwCreateWindow(1920, 1080, "My Game Engine", nullptr, nullptr);
 
 	glfwSetKeyCallback(window, Key_Callback);
 	glfwMakeContextCurrent(window);
@@ -112,6 +112,7 @@ void IRenderEngine::Destroy()
 	delete m_pRenderContext;
 
 	//terminate openGL
+	glfwDestroyWindow(m_pWindow);
 	glfwTerminate();
 
 	//Delete Instance Pointer

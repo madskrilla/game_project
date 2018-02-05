@@ -12,7 +12,7 @@ CGameObject::CGameObject()
 
 	m_pRenderer = new cQuadRenderer();
 	m_pRenderer->Initialize();
-	m_pRenderer->SetTextureName("container.jpg");
+	m_pRenderer->SetTextureName("wall.jpg");
 }
 
 CGameObject::CGameObject(CGameObject& copy)
@@ -22,7 +22,7 @@ CGameObject::CGameObject(CGameObject& copy)
 
 CGameObject::~CGameObject()
 {
-
+	delete m_pRenderer;
 }
 
 void CGameObject::SetPosition(float x, float y, float z)

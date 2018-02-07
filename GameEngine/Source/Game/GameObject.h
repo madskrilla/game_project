@@ -1,8 +1,6 @@
 #pragma once
 #include "../RenderEngine/Source/RenderIncludes.h"
 
-class CRenderNode;
-
 class CGameObject
 {
 public:

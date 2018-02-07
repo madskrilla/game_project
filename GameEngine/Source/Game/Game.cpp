@@ -4,6 +4,8 @@
 
 #include "../RenderEngine/Source/RenderEngineInterface.h"
 #include "GameObject.h"
+#include "MoveableObject.h"
+#include "PlayerCharacter.h"
 
 CGame* CGame::m_pInst = nullptr;
 CGame* CGame::GetInstance()
@@ -33,10 +35,15 @@ CGame::~CGame()
 
 void CGame::Initialize()
 {
-	CGameObject* background = new CGameObject();
-	IRenderEngine::GetInstance()->AddRenderObject(background->GetRenderer());
-	
-	m_vecGameObjects.push_back(background);
+	AddObject(new CGameObject());
+	AddObject(new CPlayerCharacter("mario.jpg"));
+
+}
+
+void CGame::AddObject(CGameObject* newObj)
+{
+	m_vecGameObjects.push_back(newObj);
+	IRenderEngine::GetInstance()->AddRenderObject(newObj->GetRenderer());
 }
 
 void CGame::Update(float deltaTime)

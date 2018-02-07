@@ -13,6 +13,8 @@ public:
 	void Update(float deltaTime);
 	void Destroy();
 
+	void AddObject(CGameObject* newobj);
+
 private:
 
 	CGame();

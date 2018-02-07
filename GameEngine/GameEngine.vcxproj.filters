@@ -59,6 +59,12 @@
     <Filter Include="InputManager">
       <UniqueIdentifier>{98c07d8d-77bc-4593-94af-38affff1a9f0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="InputManager\Headers">
+      <UniqueIdentifier>{d66243bb-706b-47b6-99d0-dd5df754d482}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="InputManager\Source">
+      <UniqueIdentifier>{16b9ffbe-14bb-452e-a10d-b28167dbe57e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Main.cpp">
@@ -90,6 +96,15 @@
     </ClCompile>
     <ClCompile Include="Source\RenderEngine\Source\QuadRenderer.cpp">
       <Filter>RenderEngine\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\InputManager\Source\InputManager.cpp">
+      <Filter>InputManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Game\MoveableObject.cpp">
+      <Filter>Game\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Game\PlayerCharacter.cpp">
+      <Filter>Game\Source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -129,6 +144,15 @@
     </ClInclude>
     <ClInclude Include="Source\RenderEngine\Source\IRenderer.h">
       <Filter>RenderEngine\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\InputManager\Source\InputManager.h">
+      <Filter>InputManager\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Game\MoveableObject.h">
+      <Filter>Game\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Game\PlayerCharacter.h">
+      <Filter>Game\Headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

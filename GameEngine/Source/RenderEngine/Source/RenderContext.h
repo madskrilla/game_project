@@ -16,7 +16,7 @@ public:
 
 	//Methods
 	void Initialize();
-	void Render(float deltaTime);
+	void Render();
 	void Destroy();
 
 	void AddRenderObject(IRenderer* render, unsigned int numVerts);

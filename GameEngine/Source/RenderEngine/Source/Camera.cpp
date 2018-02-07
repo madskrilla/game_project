@@ -9,13 +9,13 @@ CCamera::CCamera()
 
 	if (m_eType == CamType::ORTHO)
 	{
-		m_matProjection = glm::ortho(0.0f, 800.0f, 0.0f, 600.0f, 0.1f, 100.0f);
+		m_matProjection = glm::ortho(0.0f, 1920.0f, 0.0f, 1080.0f, 0.1f, 100.0f);
 	}
 	else
 	{
-		m_matProjection = glm::perspective(glm::radians(45.0f), float(800 / 600), 0.1f, 100.0f);
+		m_matProjection = glm::perspective(glm::radians(45.0f), float(1920 / 1080), 0.1f, 100.0f);
 	}
-	m_vecPosition = { 0.0f,0.0f,-3.0f };
+	m_vecPosition = { 0.0f,0.0f,-10.0f };
 	m_matView = glm::translate(m_matView, m_vecPosition);
 }
 

@@ -15,6 +15,13 @@ float deltaTime;
 
 void InitializeModules();
 
+/* 
+	Main()
+	Summary:
+	Initialize Engine Modules
+	Run Main Game Loop
+	Destroy Modules on close
+*/
 int main()
 {
 	bool playing = true;

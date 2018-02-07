@@ -22,7 +22,7 @@ public:
 	//Methods
 	void Initialize();
 	void Destroy();
-	bool Update(float deltaTime);
+	bool Update();
 
 	static void Key_Callback(GLFWwindow* window, int key, int scancode, int action, int mode);
 	float DeltaTime();

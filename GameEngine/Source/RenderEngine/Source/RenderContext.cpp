@@ -1,3 +1,14 @@
+/*
+	RenderContext.cpp
+
+	Purpose:
+	Holds a shader program and all of the render objects it is responsible for
+
+	Last Modified:
+	2/6/2018
+	Reason:
+	Adding Comments
+*/
 #include "stdafx.h"
 #include "RenderIncludes.h"
 
@@ -26,6 +37,12 @@ CRenderContext::~CRenderContext()
 {
 }
 
+/*
+	Initialize()
+	Summary:
+	Gets necessary references to outside modules
+	Initializes shaders and buffers
+*/
 void CRenderContext::Initialize()
 {
 	m_pTextureManager = CTextureManager::GetInstance();
@@ -39,6 +56,11 @@ void CRenderContext::Initialize()
 	InitializeIndexBuffer();
 }
 
+/*
+	InitializeVertexShader()
+	Summary:
+	Loads and compiles the vertex shader
+*/
 void CRenderContext::InitializeVertexShader()
 {
 	m_sVertexShader = glCreateShader(GL_VERTEX_SHADER);
@@ -48,6 +70,11 @@ void CRenderContext::InitializeVertexShader()
 	ComplileShader(source, m_sVertexShader);
 }
 
+/*
+	InitializeFragmentShader()
+	Summary:
+	Loads and compiles the fragment shader
+*/
 void CRenderContext::InitialzeFragmentShader()
 {
 	m_sFragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
@@ -57,6 +84,16 @@ void CRenderContext::InitialzeFragmentShader()
 	ComplileShader(source, m_sFragmentShader);
 }
 
+/*
+	LoadShader( string Filename )
+	Params:
+	filename - name of the shaderfile to be loaded
+
+	Summary:
+	Takes in a filename
+	Finds the given shader
+	Returns the raw text in the file
+*/
 std::string CRenderContext::LoadShader(std::string _fileName)
 {
 	std::string filePath = m_strShaderFolder + _fileName;
@@ -80,6 +117,16 @@ std::string CRenderContext::LoadShader(std::string _fileName)
 	}
 }
 
+/*
+	CompileShader( const GLchar* shaderSource, GLuint shader )
+	Params:
+	shaderSource - raw text of a shader program
+	shader - variable to store shader pointer
+
+	Summary:
+	Compiles shader source code
+	Stores compiled shader
+*/
 void CRenderContext::ComplileShader(const GLchar* _shaderSource, GLuint _shader)
 {
 	glShaderSource(_shader, 1, &_shaderSource, NULL);
@@ -95,6 +142,12 @@ void CRenderContext::ComplileShader(const GLchar* _shaderSource, GLuint _shader)
 	}
 }
 
+/*
+	InitializeShaderProgram()
+	Summary:
+	Creates a new shader program
+	Attaches associated shaders to the program
+*/
 void CRenderContext::InitializeShaderProgram()
 {
 	m_ShaderProgram = glCreateProgram();
@@ -114,6 +167,11 @@ void CRenderContext::InitializeShaderProgram()
 	}
 }
 
+/*
+	LinkShaderAttributes()
+	Summary:
+	Establishes the memory location of vertex attributes
+*/
 void CRenderContext::LinkShaderAttributes()
 {
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(VERT_POS_UV), (GLvoid*)0);
@@ -123,6 +181,12 @@ void CRenderContext::LinkShaderAttributes()
 	glEnableVertexAttribArray(1);
 }
 
+/*
+	InitializeVertexBuffer()
+	Summary:
+	Allocates the buffer to hold all the verticies in the renderset
+	Link vertex attributes to the shader program
+*/
 void CRenderContext::InitializeVertexBuffer()
 {
 	glGenVertexArrays(1, &m_VertArrayObject);
@@ -137,6 +201,11 @@ void CRenderContext::InitializeVertexBuffer()
 	glBindVertexArray(0);
 }
 
+/* 
+	UpdateVertexBuffer()
+	Summary:
+	Attach the vertex list to the vertex buffer
+*/
 void CRenderContext::UpdateVertexBuffer()
 {
 	glBindBuffer(GL_ARRAY_BUFFER, m_VertBufferObject);
@@ -148,6 +217,11 @@ void CRenderContext::UpdateVertexBuffer()
 	glBindVertexArray(0);
 }
 
+/*
+	InitializeIndexBuffer()
+	Summary:
+	Attach the list of indicies to the index buffer
+*/
 void CRenderContext::InitializeIndexBuffer()
 {
 	glGenBuffers(1, &m_ElementArrayObjectIndicies);
@@ -156,6 +230,16 @@ void CRenderContext::InitializeIndexBuffer()
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 }
 
+/*
+	RenderNode( IRenderer* Node )
+	Params:
+	Node - the object to be rendered
+
+	Summary:
+	Gets the number of and starting index
+	Sets the nodes texture and transform matrix in the shader
+	Draws the object
+*/
 void CRenderContext::RenderNode(IRenderer * node)
 {
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ElementArrayObjectIndicies);
@@ -170,6 +254,17 @@ void CRenderContext::RenderNode(IRenderer * node)
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 }
 
+/*
+	AddRenderObject( IRenderer* Render, unsigned int NumVerts )
+	Params:
+	Render - the renderer for the new object
+	NumVerts - the number of verticies contained in the object
+
+	Summary:
+	Determines if a vertex exists in the vertex buffer
+	If vertex exists, add its index to the index buffer
+	else add the vertex to the vertex buffer, its index is the current size of the buffer
+*/
 void CRenderContext::AddRenderObject(IRenderer* render, unsigned int numVerts)
 {
 	render->SetIndexStart((unsigned int)m_vecIndicies.size());
@@ -199,7 +294,14 @@ void CRenderContext::AddRenderObject(IRenderer* render, unsigned int numVerts)
 	UpdateVertexBuffer();
 }
 
-void CRenderContext::Render(float deltaTime)
+/*
+	Render()
+	Summary:
+	Set shader program
+	Set Vertex array
+	Render Objects
+*/
+void CRenderContext::Render()
 {
 	glUseProgram(m_ShaderProgram);
 
@@ -212,6 +314,11 @@ void CRenderContext::Render(float deltaTime)
 	}
 }
 
+/*
+	Destroy()
+	Summary:
+	Deallocate any memory allocated in the RenderContext
+*/
 void CRenderContext::Destroy()
 {
 	delete m_pCamera;

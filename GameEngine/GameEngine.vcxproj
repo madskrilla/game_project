@@ -139,6 +139,9 @@
     <ClCompile Include="Source\AssetManager\Source\TextureManager.cpp" />
     <ClCompile Include="Source\Game\Game.cpp" />
     <ClCompile Include="Source\Game\GameObject.cpp" />
+    <ClCompile Include="Source\Game\MoveableObject.cpp" />
+    <ClCompile Include="Source\Game\PlayerCharacter.cpp" />
+    <ClCompile Include="Source\InputManager\Source\InputManager.cpp" />
     <ClCompile Include="Source\Main.cpp" />
     <ClCompile Include="Source\PhysicsEngine\Source\PhysicsEngineInterface.cpp" />
     <ClCompile Include="Source\RenderEngine\Source\Camera.cpp" />
@@ -155,6 +158,9 @@
     <ClInclude Include="Source\AssetManager\stb_image.h" />
     <ClInclude Include="Source\Game\Game.h" />
     <ClInclude Include="Source\Game\GameObject.h" />
+    <ClInclude Include="Source\Game\MoveableObject.h" />
+    <ClInclude Include="Source\Game\PlayerCharacter.h" />
+    <ClInclude Include="Source\InputManager\Source\InputManager.h" />
     <ClInclude Include="Source\PhysicsEngine\Source\PhysicsEngineInterface.h" />
     <ClInclude Include="Source\RenderEngine\Source\Camera.h" />
     <ClInclude Include="Source\RenderEngine\Source\IRenderer.h" />

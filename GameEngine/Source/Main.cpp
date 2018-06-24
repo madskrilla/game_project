@@ -1,5 +1,8 @@
 #include "stdafx.h"
-#include <vld.h>
+
+#if _DEBUG
+	#include <vld.h>
+#endif
 
 #include "RenderEngine/Source/RenderEngineInterface.h"
 #include "PhysicsEngine\Source\PhysicsEngineInterface.h"
@@ -38,7 +41,7 @@ int main()
 
 		game->Update(deltaTime);
 		physicsEngine->Update(deltaTime);
-		playing = renderEngine->Update(deltaTime);
+		playing = renderEngine->Update();
 	}
 
 	renderEngine->Destroy();

@@ -22,7 +22,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{18DEAF8B-C105-43E8-B29C-C3D25020BCD1}</ProjectGuid>
     <RootNamespace>GameEngine</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -95,7 +95,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>glew32s.lib;glfw3.lib;opengl32.lib;SOIL.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glew32s.lib;glfw3.lib;opengl32.lib;SOIL.lib;assimp-vc140-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -106,7 +106,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>glew32s.lib;glfw3.lib;opengl32.lib;SOIL.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glew32s.lib;glfw3.lib;opengl32.lib;SOIL.lib;assimp-vc140-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -146,6 +146,8 @@
     <ClCompile Include="Source\Main.cpp" />
     <ClCompile Include="Source\PhysicsEngine\Source\PhysicsEngineInterface.cpp" />
     <ClCompile Include="Source\RenderEngine\Source\Camera.cpp" />
+    <ClCompile Include="Source\RenderEngine\Source\Mesh.cpp" />
+    <ClCompile Include="Source\RenderEngine\Source\Model.cpp" />
     <ClCompile Include="Source\RenderEngine\Source\QuadRenderer.cpp" />
     <ClCompile Include="Source\RenderEngine\Source\RenderContext.cpp" />
     <ClCompile Include="Source\RenderEngine\Source\RenderEngineInterface.cpp" />
@@ -165,6 +167,8 @@
     <ClInclude Include="Source\PhysicsEngine\Source\PhysicsEngineInterface.h" />
     <ClInclude Include="Source\RenderEngine\Source\Camera.h" />
     <ClInclude Include="Source\RenderEngine\Source\IRenderer.h" />
+    <ClInclude Include="Source\RenderEngine\Source\Mesh.h" />
+    <ClInclude Include="Source\RenderEngine\Source\Model.h" />
     <ClInclude Include="Source\RenderEngine\Source\QuadRenderer.h" />
     <ClInclude Include="Source\RenderEngine\Source\RenderContext.h" />
     <ClInclude Include="Source\RenderEngine\Source\RenderEngineInterface.h" />

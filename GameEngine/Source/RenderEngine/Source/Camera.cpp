@@ -29,17 +29,20 @@ CCamera::~CCamera()
 
 }
 
+void CCamera::Initialize(int & shaderProgram)
+{
+	m_nProjectionLocation = glGetUniformLocation(shaderProgram, "projection");
+	m_nViewLocation = glGetUniformLocation(shaderProgram, "view");
+}
+
 void CCamera::Update(float dt)
 {
 	
 }
 
-void CCamera::SendCameraToGPU(int & shaderProgram)
+void CCamera::SendCameraToGPU()
 {
-	unsigned int projectionLoc = glGetUniformLocation(shaderProgram, "projection");
-	glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(m_matProjection));
-
-	unsigned int viewLocation = glGetUniformLocation(shaderProgram, "view");
-	glUniformMatrix4fv(viewLocation, 1, GL_FALSE, glm::value_ptr(m_matView));
+	glUniformMatrix4fv(m_nProjectionLocation, 1, GL_FALSE, glm::value_ptr(m_matProjection));
+	glUniformMatrix4fv(m_nViewLocation, 1, GL_FALSE, glm::value_ptr(m_matView));
 }
 

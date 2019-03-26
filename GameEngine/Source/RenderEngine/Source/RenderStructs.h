@@ -35,3 +35,15 @@ public:
 		return true;
 	}
 };
+
+struct Assimp_Vertex {
+	glm::vec3 position;
+	glm::vec3 normal;
+	std::vector<glm::vec3> texCoords;
+};
+
+struct Texture
+{
+	int width, height, numChannels;
+	std::string name;
+};

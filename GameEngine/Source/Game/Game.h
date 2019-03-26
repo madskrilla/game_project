@@ -10,7 +10,7 @@ public:
 	static CGame* GetInstance();
 
 	void Initialize();
-	void Update(float deltaTime);
+	void Update(double deltaTime);
 	void Destroy();
 
 	void AddObject(CGameObject* newobj);

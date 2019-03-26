@@ -7,16 +7,18 @@
 
 #include <iostream>
 #include <fstream>
-#include <sstream>
+#include <regex>
 
 CTextureManager* CTextureManager::m_pInst = nullptr;
 
 CTextureManager::CTextureManager()
 {
 }
+
 CTextureManager::CTextureManager(CTextureManager &)
 {
 }
+
 CTextureManager::~CTextureManager()
 {
 }
@@ -45,25 +47,46 @@ void CTextureManager::Destroy()
 void CTextureManager::LoadTextures()
 {
 	std::vector<Texture> vecTextures;
+	std::vector<std::string> vecTextureNames;
 
-	WIN32_FIND_DATA data;
-	HANDLE findHandle;
-	std::string searchPattern = "*.jpg";
-	std::string filePath = m_strTextureFolder + searchPattern;
-
-	findHandle = FindFirstFile(filePath.c_str(), &data);
-	do
+	std::ifstream manifestStream(m_strTextureFolder + m_strTextureManifestName);
+	if (manifestStream.good())
 	{
-		Texture newText;
-		newText.name = data.cFileName;
-		vecTextures.push_back(newText);
-	} while (FindNextFile(findHandle, &data));
-
-	for (unsigned int i = 0; i < vecTextures.size(); i++)
+		std::cout << "Manifest Exist, Reading in Texture Names";
+		std::string fileName;
+		while (getline(manifestStream, fileName))
+		{
+			vecTextureNames.push_back(fileName);
+		}
+	}
+	else
 	{
-		Texture tex = vecTextures[i];
+		std::ofstream creationStream(m_strTextureFolder + m_strTextureManifestName);
+
+		WIN32_FIND_DATA data;
+		HANDLE findHandle;
+		std::regex fileName("$.jpg | $.png");
+		std::string searchPattern = "*.jpg";
+		std::string filePath = m_strTextureFolder + searchPattern;
+
+		findHandle = FindFirstFile(filePath.c_str(), &data);
+		do
+		{
+			vecTextureNames.push_back(data.cFileName);
+			creationStream << data.cFileName << "\n";
+		} while (FindNextFile(findHandle, &data));
+		
+		creationStream.close();
+	}
+
+	manifestStream.close();
+
+	for (unsigned int i = 0; i < vecTextureNames.size(); i++)
+	{
+		Texture tex;
+		tex.name = vecTextureNames[i];
 		std::string file = m_strTextureFolder + tex.name;
-		unsigned char * data = stbi_load(file.c_str(), &(tex.width), &(tex.height), &(tex.numChannels), 0);
+		unsigned char * data = stbi_load(file.c_str(), &(tex.width), &(tex.height), &(tex.numChannels), STBI_rgb_alpha);
 
 		GLuint texture = 0;
 		glGenTextures(1, &texture);
@@ -76,7 +99,7 @@ void CTextureManager::LoadTextures()
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, tex.width, tex.height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, tex.width, tex.height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
 		glGenerateMipmap(GL_TEXTURE_2D);
 
 		m_mapTextures.insert(std::pair<std::string, unsigned int>(tex.name, texture));

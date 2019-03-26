@@ -242,16 +242,14 @@ void CRenderContext::InitializeIndexBuffer()
 */
 void CRenderContext::RenderNode(IRenderer * node)
 {
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ElementArrayObjectIndicies);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, node->GetNumIndicies() * sizeof(unsigned int), &m_vecIndicies[node->GetStartIndex()], GL_STATIC_DRAW);
+	int numIndicies = node->GetNumIndicies();
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, numIndicies * sizeof(unsigned int), &m_vecIndicies[node->GetStartIndex()], GL_STATIC_DRAW);
 	glBindTexture(GL_TEXTURE_2D, node->GetTexture());
 
 	unsigned int transformLoc = glGetUniformLocation(m_ShaderProgram, "transform");
 	glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(node->GetTransformMatrix()));
 
-	glDrawElements(GL_TRIANGLES, (int)node->GetNumIndicies(), GL_UNSIGNED_INT, 0);
-
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+	glDrawElements(GL_TRIANGLES, numIndicies, GL_UNSIGNED_INT, 0);
 }
 
 /*
@@ -306,12 +304,14 @@ void CRenderContext::Render()
 	glUseProgram(m_ShaderProgram);
 
 	glBindVertexArray(m_VertArrayObject);
-	m_pCamera->SendCameraToGPU(m_ShaderProgram);
+	m_pCamera->SendCameraToGPU();
 
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ElementArrayObjectIndicies);
 	for (unsigned int i = 0; i < m_vecRenderers.size(); i++)
 	{
 		RenderNode(m_vecRenderers[i]);
 	}
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 }
 
 /*
@@ -339,4 +339,5 @@ void CRenderContext::Destroy()
 void CRenderContext::SetCamera(CCamera* cam)
 {
 	m_pCamera = cam;
+	m_pCamera->Initialize(m_ShaderProgram);
 }

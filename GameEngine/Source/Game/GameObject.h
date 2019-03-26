@@ -24,4 +24,6 @@ protected:
 	glm::vec3 m_vecPosition;
 	glm::vec3 m_vecRotation;
 	glm::vec3 m_vecScale;
+
+	bool m_bDirty;
 };

@@ -25,17 +25,21 @@ public:
 	bool Update();
 
 	static void Key_Callback(GLFWwindow* window, int key, int scancode, int action, int mode);
-	float DeltaTime();
-
+	double GetDeltaTime() { return m_dDeltaTime; }
 	//Members
 	static IRenderEngine* GetInstance();
 	void AddRenderObject(IRenderer* obj);
 private:
 	//Methods
 	GLFWwindow* CreateNewWindow();
+	void UpdateFPSCounter();
+	double DeltaTime();
 	//Members
 	GLFWwindow* m_pWindow;
 	CRenderContext* m_pRenderContext;
-	float m_fTimeLast;
+	double m_dTimeLast;
+	double m_dDeltaTime;
+	double m_dFPSTimer;
+	int m_nFrames;
 
 };

@@ -15,8 +15,9 @@ public:
 
 	~CCamera();
 
+	void Initialize(int & shaderProgram);
 	void Update(float deltaTime);
-	void SendCameraToGPU(int & shaderProgram);
+	void SendCameraToGPU();
 
 private:
 
@@ -25,6 +26,9 @@ private:
 
 	glm::mat4 m_matProjection;
 	glm::mat4 m_matView;
+
+	unsigned int m_nViewLocation;
+	unsigned int m_nProjectionLocation;
 
 	CamType m_eType;
 };

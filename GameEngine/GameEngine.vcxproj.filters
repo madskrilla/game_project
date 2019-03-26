@@ -97,14 +97,20 @@
     <ClCompile Include="Source\RenderEngine\Source\QuadRenderer.cpp">
       <Filter>RenderEngine\Source</Filter>
     </ClCompile>
-    <ClCompile Include="Source\InputManager\Source\InputManager.cpp">
-      <Filter>InputManager</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Game\MoveableObject.cpp">
       <Filter>Game\Source</Filter>
     </ClCompile>
     <ClCompile Include="Source\Game\PlayerCharacter.cpp">
       <Filter>Game\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\InputManager\Source\InputManager.cpp">
+      <Filter>InputManager\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\RenderEngine\Source\Mesh.cpp">
+      <Filter>RenderEngine\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\RenderEngine\Source\Model.cpp">
+      <Filter>RenderEngine\Source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -153,6 +159,12 @@
     </ClInclude>
     <ClInclude Include="Source\Game\PlayerCharacter.h">
       <Filter>Game\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\RenderEngine\Source\Mesh.h">
+      <Filter>RenderEngine\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\RenderEngine\Source\Model.h">
+      <Filter>RenderEngine\Headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

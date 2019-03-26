@@ -14,7 +14,7 @@ IRenderEngine* renderEngine;
 IPhysicsEngine* physicsEngine;
 CTextureManager * textureManager;
 
-float deltaTime;
+double deltaTime;
 
 void InitializeModules();
 
@@ -33,11 +33,12 @@ int main()
 	physicsEngine = IPhysicsEngine::GetInstance();
 	textureManager = CTextureManager::GetInstance();
 
+
 	InitializeModules();
 
 	while (playing)
 	{
-		deltaTime = renderEngine->DeltaTime();
+		deltaTime = renderEngine->GetDeltaTime();
 
 		game->Update(deltaTime);
 		physicsEngine->Update(deltaTime);

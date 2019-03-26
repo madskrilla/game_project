@@ -4,11 +4,8 @@
 class CTextureManager
 {
 private:
-	struct Texture
-	{
-		int width, height, numChannels;
-		std::string name;
-	};
+	//Name of the file containing a list of textures used in game
+	const std::string m_strTextureManifestName = "TextureManifest.txt";
 
 	//Hidden for Singleton
 	CTextureManager();

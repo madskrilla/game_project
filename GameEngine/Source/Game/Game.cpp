@@ -37,7 +37,6 @@ void CGame::Initialize()
 {
 	AddObject(new CGameObject());
 	AddObject(new CPlayerCharacter("mario.jpg"));
-
 }
 
 void CGame::AddObject(CGameObject* newObj)
@@ -46,7 +45,7 @@ void CGame::AddObject(CGameObject* newObj)
 	IRenderEngine::GetInstance()->AddRenderObject(newObj->GetRenderer());
 }
 
-void CGame::Update(float deltaTime)
+void CGame::Update(double deltaTime)
 {
 	for (unsigned int i = 0; i < m_vecGameObjects.size(); i++)
 	{

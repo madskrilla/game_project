@@ -112,6 +112,9 @@
     <ClCompile Include="Source\RenderEngine\Source\Model.cpp">
       <Filter>RenderEngine\Source</Filter>
     </ClCompile>
+    <ClCompile Include="Source\AssetManager\Source\ModelManager.cpp">
+      <Filter>AssetManager\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\RenderEngine\Source\RenderEngineInterface.h">
@@ -166,6 +169,9 @@
     <ClInclude Include="Source\RenderEngine\Source\Model.h">
       <Filter>RenderEngine\Headers</Filter>
     </ClInclude>
+    <ClInclude Include="Source\AssetManager\Source\ModelManager.h">
+      <Filter>AssetManager\Header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Source\RenderEngine\Source\Shaders\basicFragShader.frag">
@@ -180,5 +186,6 @@
     <None Include="Source\RenderEngine\Source\Shaders\VS_Pos_Tex.vs">
       <Filter>RenderEngine\Shaders</Filter>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

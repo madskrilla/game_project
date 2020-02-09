@@ -7,12 +7,14 @@
 #include "RenderEngine/Source/RenderEngineInterface.h"
 #include "PhysicsEngine\Source\PhysicsEngineInterface.h"
 #include "AssetManager\Source\TextureManager.h"
+#include "AssetManager/Source/ModelManager.h"
 #include "Game\Game.h"
 
 CGame* game;
 IRenderEngine* renderEngine;
 IPhysicsEngine* physicsEngine;
 CTextureManager * textureManager;
+CModelManager * modelManager;
 
 double deltaTime;
 
@@ -32,6 +34,7 @@ int main()
 	renderEngine = IRenderEngine::GetInstance();
 	physicsEngine = IPhysicsEngine::GetInstance();
 	textureManager = CTextureManager::GetInstance();
+	modelManager = CModelManager::GetInstance();
 
 
 	InitializeModules();
@@ -56,5 +59,6 @@ void InitializeModules()
 	renderEngine->Initialize();
 	physicsEngine->Initialize();
 	textureManager->Initialize();
+	modelManager->Initialize();
 	game->Initialize();
 }

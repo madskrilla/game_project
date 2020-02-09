@@ -52,6 +52,8 @@ bld/
 [Bb]in/
 [Oo]bj/
 [Ll]og/
+[Pp]ackages/
+AssetPack/
 
 
 # Visual Studio 2015 cache/options directory

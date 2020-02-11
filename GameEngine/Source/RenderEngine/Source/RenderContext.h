@@ -30,6 +30,7 @@ private:
 
 	//Shader Program Methods
 	void InitializeShaderProgram();
+	void LoadShaderProgramFromFile();
 
 	void LinkShaderAttributes();
 

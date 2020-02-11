@@ -47,10 +47,17 @@ void CRenderContext::Initialize()
 {
 	m_pTextureManager = CTextureManager::GetInstance();
 
-	InitializeVertexShader();
-	InitialzeFragmentShader();
+	if (false)
+	{
+		InitializeVertexShader();
+		InitialzeFragmentShader();
 
-	InitializeShaderProgram();
+		InitializeShaderProgram();
+	}
+	else
+	{
+		LoadShaderProgramFromFile();
+	}
 
 	InitializeVertexBuffer();
 	InitializeIndexBuffer();
@@ -164,6 +171,42 @@ void CRenderContext::InitializeShaderProgram()
 	if (!success) {
 		glGetProgramInfoLog(m_ShaderProgram, 512, NULL, infoLog);
 		std::cout << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n" << infoLog << std::endl;
+	}
+}
+
+void CRenderContext::LoadShaderProgramFromFile()
+{
+	std::ifstream programInStream("Source/Assets/AssetPack/shaderProgram.bin", std::ios::binary);
+
+	GLint formats = 0;
+	glGetIntegerv(GL_NUM_PROGRAM_BINARY_FORMATS, &formats);
+	if (formats < 1) {
+		std::cerr << "Driver does not support any binary formats." << std::endl;
+		exit(EXIT_FAILURE);
+	}
+
+	if (programInStream.good())
+	{
+		m_ShaderProgram = glCreateProgram();
+
+		std::istreambuf_iterator<char> startIt(programInStream), endIt;
+		std::vector<char> buffer(startIt, endIt);  // Load file
+
+		programInStream.close();
+		//::TODO:: 
+		//DONT HARDCODE THE FORMAT
+		GLenum format = 36385;
+
+		// Install shader binary
+		glProgramBinary(m_ShaderProgram, format, buffer.data(), buffer.size());
+
+		GLint success;
+		GLchar infoLog[512];
+		glGetProgramiv(m_ShaderProgram, GL_LINK_STATUS, &success);
+		if (!success) {
+			glGetProgramInfoLog(m_ShaderProgram, 512, NULL, infoLog);
+			std::cout << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n" << infoLog << std::endl;
+		}
 	}
 }
 
